@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { BellIcon, SearchIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
+import useAuth from '../hooks/useAuth'
 
 type Props = {}
 
 function Header({}: Props) {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { logout} = useAuth()
 
   useEffect(() => {
     const handleScroll = () => {
