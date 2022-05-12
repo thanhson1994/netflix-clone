@@ -4,20 +4,22 @@ import { baseUrl } from '../constants/movie'
 import { Movie } from '../typings'
 import { FaPlay } from 'react-icons/fa'
 import { InformationCircleIcon } from '@heroicons/react/outline'
+import { useSelector, useDispatch } from 'react-redux'
+import { setModal } from '../store/modalReducer'
+import { setMovie as setCurrentMovie } from '../store/movieReducer'
 
 type Props = {
   netflixOriginals: Movie[]
 }
 
 function Banner({ netflixOriginals }: Props) {
-  console.log('netflixOriginals', netflixOriginals)
   const [movie, setMovie] = useState<Movie | null>(null)
   useEffect(() => {
     setMovie(
       netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
     )
   }, [netflixOriginals])
-  console.log('movie', movie)
+  const dispatch = useDispatch()
 
   return (
     <div className="flex flex-col space-y-2 py-16 lg:h-[65vh] lg:justify-end lg:pb-12">
@@ -43,8 +45,8 @@ function Banner({ netflixOriginals }: Props) {
         <button
           className="bannerButton bg-[gray]/70"
           onClick={() => {
-            // setCurrentMovie(movie)
-            // setShowModal(true)
+            dispatch(setCurrentMovie(movie))
+            dispatch(setModal(true))
           }}
         >
           <InformationCircleIcon className="h-5 w-5 md:h-8 md:w-8" /> More Info
