@@ -4,6 +4,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import useAuth from '../hooks/useAuth'
+import { useRouter } from 'next/router'
 
 type Props = {}
 
@@ -14,7 +15,8 @@ interface Inputs {
 
 const Login = (props: Props) => {
   const [login, setLogin] = useState(false)
-  const {signIn, signUp} = useAuth()
+  const { signIn, signUp } = useAuth()
+  const router = useRouter()
 
   const {
     register,
@@ -30,6 +32,10 @@ const Login = (props: Props) => {
     } else {
       await signUp(data.email, data.password)
     }
+  }
+
+  const redirectToRegisterPage = () => {
+    router.push('/')
   }
   return (
     <div
@@ -100,8 +106,7 @@ const Login = (props: Props) => {
           New to Netflix?{' '}
           <button
             className="cursor-pointer text-white hover:underline"
-            onClick={() => setLogin(false)}
-            type="submit"
+            onClick={redirectToRegisterPage}
           >
             Sign up now
           </button>

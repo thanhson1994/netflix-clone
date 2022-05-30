@@ -44,6 +44,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   useEffect(
     () =>
       onAuthStateChanged(auth, (user) => {
+        console.log('user',user)
+        console.log('auth',auth)
         if (user) {
           // Logged in...
           setUser(user)
@@ -78,7 +80,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setUser(userCredential.user)
-        router.push('/')
+        router.push('/browse')
         setLoading(false)
       })
       .catch((error) => alert(error.message))
