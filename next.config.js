@@ -5,7 +5,8 @@ module.exports = {
     domains: ['image.tmdb.org', 'rb.gy'],
   },
   i18n: {
-    locales: ['en', 'vn-en', 'nl'],
+    locales: ['vn-en', 'vn'],
     defaultLocale: 'vn-en',
+    localeDetection: false,
   },
 }

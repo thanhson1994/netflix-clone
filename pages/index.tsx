@@ -14,6 +14,7 @@ const Home = (props: Props) => {
   const redirectToLogin = () => {
     router.push('/login')
   }
+  console.log('router', router)
 
   return (
     <div className="overflow-hidden">
