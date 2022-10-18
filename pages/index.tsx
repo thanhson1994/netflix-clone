@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import FrequentlyAskQuestions from '../components/FrequentlyAskQuestions'
 import Footer from '../components/Footer'
 
-type Props = {}
+type Props = {} 
 
 const Home = (props: Props) => {
   const router = useRouter()

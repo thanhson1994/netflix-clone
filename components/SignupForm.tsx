@@ -1,11 +1,18 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 
 type Props = {}
 
 const SignupForm = (props: Props) => {
+  const router = useRouter()
+
+  const handleRegisterEmail = (e) => {
+    e.preventDefault();
+    router.push('/signup/registration')
+  }
   return (
-    <div className="flex flex-col pt-[0.85rem] w-[400px] md:w-[800px] max-w-[950px]">
-      <h3 className="my-0 mx-auto text-center pb-5 px-[5%] text-[1.2rem]">
+    <div className="flex w-[400px] max-w-[950px] flex-col pt-[0.85rem] md:w-[800px]">
+      <h3 className="my-0 mx-auto px-[5%] pb-5 text-center text-[1.2rem]">
         Ready to watch? Enter your email to create or restart your membership.
       </h3>
       <form className="max-w-[950px]">
@@ -23,7 +30,7 @@ const SignupForm = (props: Props) => {
             </span>
           </label>
           <div className="flex items-center  bg-[#e50914] px-2">
-            <button className="flex gap-1.5">
+            <button onClick={handleRegisterEmail}  className="flex gap-1.5">
               <span className="">GET STARTTED</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
